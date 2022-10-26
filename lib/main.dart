@@ -44,6 +44,13 @@ class _MyAppState extends State<MyApp> {
   var _questioIndex = 0;
   var _totalScore = 0;
 
+  void _resetQuiz() {
+    setState(() {
+      _questioIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   void _answerQuestion(int score) {
     _totalScore += score;
 
@@ -73,7 +80,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questioIndex,
                 questions: _questions,
               )
-            : Result(_totalScore),
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
